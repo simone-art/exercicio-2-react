@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Fragment} from 'react';
+import Input from './componentes/Input/Input'
 import './App.css';
 
 function App() {
+  let value = "";
+  const onChangeInput=(element) => {
+    value=element.target.value
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Fragment>
+      <Input placeholder="Digite seu nome" tipo="text" change={onChangeInput} />
+      {/* <Input placeholder="Digite sua idade" tipo="password"/> */}
+      <button>Cadastrar</button>
+      <p>Bruna</p>
+      </Fragment>
     </div>
   );
 }
