@@ -27,6 +27,9 @@ adicionarItem = () => {
             ...this.state.nomes,
             this.state.value
         ]
+        //SI COLOCAS EL ...THIS.STATE.NOMES ABAJO, COMO ESTÁ EN EL
+        //CÓDIGO, EL NOMBRE APARECERÁ DE PRIMERO. SI LO PONES AL 
+        //CONTRARIO, EL NOMBRE APARECE DE ÚLTIMO EN LA LISTA.
     })
 }
     render() {
