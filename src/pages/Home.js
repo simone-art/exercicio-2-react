@@ -10,7 +10,8 @@ class Home extends React.Component{
             nomes:[
                 "Janiarly", 
                 "Raissa"
-            ]
+            ],
+            valorRemovido:""
         }
     }
 
@@ -32,21 +33,53 @@ adicionarItem = () => {
         //CONTRARIO, EL NOMBRE APARECE DE ÚLTIMO EN LA LISTA.
     })
 }
-    render() {
-        return ( 
-            <Fragment>
-            <h1>HOME</h1>
-            <Input placeholder="Digite seu nome" tipo="text" change={this.onChangeInput} />
-            <p>{this.state.value}</p>
-            <Button add={this.adicionarItem}/>
-            <ul>
-            {this.state.nomes.map((value, index) => (
-            <li>{value}</li>
-            ))}
-            </ul>
-            </Fragment>
-        );
-    }
+
+removerItem = (item) => {
+    console.log(item);
+        let novoArray = this.state.nomes.filter(nome => (
+            nome !== item
+        ));
+            this.setState({
+                nomes: novoArray,
+                valorRemovido: item
+            })
 }
 
+desfazerRemover = (item) => {
+    console.log(item)
+    // let trazerNomeRemovido= valorRemovido
+    this.setState({
+        nomes: [
+            ...this.state.nomes,
+            this.state.valorRemovido
+        ]
+    })
+}
+
+render() {
+    return (
+        <Fragment>
+            <Input placeholder="Digite seu nome"
+                tipo="text"
+                change={this.onChangeInput}></Input>
+            {/* <Input placeholder="Digite sua senha" tipo="password"></Input> */}
+
+            <Button click={this.adicionarItem}> Cadastrar </Button>
+                <Button click={this.desfazerRemover}> Desfazer Remover</Button>   
+            <ul>
+                {this.state.nomes.map((value, i) => {
+                    return (
+                        <div key={i} className="lista_item">
+                            <li>{value}</li>
+                            <Button click={() => this.removerItem(value)}> x </Button>   
+                        {/* <li>{value}</li> */}
+                    </div>
+                    );
+                })}
+
+            </ul>
+        </Fragment>
+    );
+}
+}
 export default Home;
