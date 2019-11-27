@@ -1,0 +1,12 @@
+.card {
+    width: 200px;
+    height: 250px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.card-img {
+    width: 80px;
+    height: 100px;
+
+}
